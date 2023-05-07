@@ -1,0 +1,21 @@
+syntax = "proto3";
+option go_package = "./proto";
+
+package weather;
+
+service WeatherService {
+  rpc GetUpdates (Location) returns (stream WeatherUpdate) {}
+}
+
+message Location {
+  string name = 1;
+  double latitude = 2;
+  double longitude = 3;
+}
+
+message WeatherUpdate {
+  string location_name = 1;
+  double temperature = 2;
+  double humidity = 3;
+  double wind_speed = 4;
+}
